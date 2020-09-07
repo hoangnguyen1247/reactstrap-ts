@@ -3,84 +3,84 @@ import { shallow } from 'enzyme';
 import { NavLink } from '../';
 
 describe('NavLink', () => {
-  it('should render .nav-link markup', () => {
-    const wrapper = shallow(<NavLink />);
+    it('should render .nav-link markup', () => {
+        const wrapper = shallow(<NavLink />);
 
-    expect(wrapper.html()).toBe('<a class="nav-link"></a>');
-  });
+        expect(wrapper.html()).toBe('<a class="nav-link"></a>');
+    });
 
-  it('should render custom tag', () => {
-    const wrapper = shallow(<NavLink tag="div" />);
+    it('should render custom tag', () => {
+        const wrapper = shallow(<NavLink tag="div" />);
 
-    expect(wrapper.html()).toBe('<div class="nav-link"></div>');
-  });
+        expect(wrapper.html()).toBe('<div class="nav-link"></div>');
+    });
 
-  it('should render children', () => {
-    const wrapper = shallow(<NavLink>Children</NavLink>);
+    it('should render children', () => {
+        const wrapper = shallow(<NavLink>Children</NavLink>);
 
-    expect(wrapper.html()).toBe('<a class="nav-link">Children</a>');
-  });
+        expect(wrapper.html()).toBe('<a class="nav-link">Children</a>');
+    });
 
-  it('should pass additional classNames', () => {
-    const wrapper = shallow(<NavLink className="extra" />);
+    it('should pass additional classNames', () => {
+        const wrapper = shallow(<NavLink className="extra" />);
 
-    expect(wrapper.hasClass('extra')).toBe(true);
-    expect(wrapper.hasClass('nav-link')).toBe(true);
-  });
+        expect(wrapper.hasClass('extra')).toBe(true);
+        expect(wrapper.hasClass('nav-link')).toBe(true);
+    });
 
-  it('should render active class', () => {
-    const wrapper = shallow(<NavLink active />);
+    it('should render active class', () => {
+        const wrapper = shallow(<NavLink active />);
 
-    expect(wrapper.hasClass('active')).toBe(true);
-  });
+        expect(wrapper.hasClass('active')).toBe(true);
+    });
 
-  it('should render disabled markup', () => {
-    const wrapper = shallow(<NavLink disabled />);
+    it('should render disabled markup', () => {
+        const wrapper = shallow(<NavLink disabled />);
 
-    expect(wrapper.hasClass('disabled')).toBe(true);
-  });
+        expect(wrapper.hasClass('disabled')).toBe(true);
+    });
 
-  it('handles onClick prop', () => {
-    const onClick = jest.fn();
-    const e = createSpyObj('e', ['preventDefault']);
-    const wrapper = shallow(
-      <NavLink onClick={onClick} />
-    );
+    it('handles onClick prop', () => {
+        const onClick = jest.fn();
+        const e = createSpyObj('e', ['preventDefault']);
+        const wrapper = shallow(
+            <NavLink onClick={onClick} />
+        );
 
-    wrapper.find('a').simulate('click', e);
-    expect(onClick).toHaveBeenCalled();
-    expect(e.preventDefault).not.toHaveBeenCalled();
-  });
+        wrapper.find('a').simulate('click', e);
+        expect(onClick).toHaveBeenCalled();
+        expect(e.preventDefault).not.toHaveBeenCalled();
+    });
 
-  it('handles onClick events', () => {
-    const e = createSpyObj('e', ['preventDefault']);
-    const wrapper = shallow(
-      <NavLink />
-    );
+    it('handles onClick events', () => {
+        const e = createSpyObj('e', ['preventDefault']);
+        const wrapper = shallow(
+            <NavLink />
+        );
 
-    wrapper.find('a').simulate('click', e);
-    expect(e.preventDefault).not.toHaveBeenCalled();
-  });
+        wrapper.find('a').simulate('click', e);
+        expect(e.preventDefault).not.toHaveBeenCalled();
+    });
 
-  it('prevents link clicks via onClick for dropdown nav-items', () => {
-    const e = createSpyObj('e', ['preventDefault']);
-    const wrapper = shallow(
-      <NavLink href="#" />
-    );
+    it('prevents link clicks via onClick for dropdown nav-items', () => {
+        const e = createSpyObj('e', ['preventDefault']);
+        const wrapper = shallow(
+            <NavLink href="#" />
+        );
 
-    wrapper.find('a').simulate('click', e);
-    expect(e.preventDefault).toHaveBeenCalled();
-  });
+        wrapper.find('a').simulate('click', e);
+        expect(e.preventDefault).toHaveBeenCalled();
+    });
 
-  it('is not called when disabled', () => {
-    const onClick = jest.fn();
-    const e = createSpyObj('e', ['preventDefault']);
-    const wrapper = shallow(
-      <NavLink disabled onClick={onClick} />
-    );
+    it('is not called when disabled', () => {
+        const onClick = jest.fn();
+        const e = createSpyObj('e', ['preventDefault']);
+        const wrapper = shallow(
+            <NavLink disabled onClick={onClick} />
+        );
 
-    wrapper.find('a').simulate('click', e);
-    expect(e.preventDefault).toHaveBeenCalled();
-    expect(onClick).not.toHaveBeenCalled();
-  });
+        wrapper.find('a').simulate('click', e);
+        expect(e.preventDefault).toHaveBeenCalled();
+        expect(onClick).not.toHaveBeenCalled();
+    });
 });

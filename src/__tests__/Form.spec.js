@@ -3,33 +3,33 @@ import { shallow } from 'enzyme';
 import { Form } from '../';
 
 describe('Form', () => {
-  it('should render with "form" tag', () => {
-    const wrapper = shallow(<Form>Yo!</Form>);
+    it('should render with "form" tag', () => {
+        const wrapper = shallow(<Form>Yo!</Form>);
 
-    expect(wrapper.type()).toBe('form');
-  });
+        expect(wrapper.type()).toBe('form');
+    });
 
-  it('should render children', () => {
-    const wrapper = shallow(<Form>Yo!</Form>);
+    it('should render children', () => {
+        const wrapper = shallow(<Form>Yo!</Form>);
 
-    expect(wrapper.text()).toBe('Yo!');
-  });
+        expect(wrapper.text()).toBe('Yo!');
+    });
 
-  it('should render with "form-inline" class', () => {
-    const wrapper = shallow(<Form inline>Yo!</Form>);
+    it('should render with "form-inline" class', () => {
+        const wrapper = shallow(<Form inline>Yo!</Form>);
 
-    expect(wrapper.hasClass('form-inline')).toBe(true);
-  });
+        expect(wrapper.hasClass('form-inline')).toBe(true);
+    });
 
-  it('should render additional classes', () => {
-    const wrapper = shallow(<Form className="other">Yo!</Form>);
+    it('should render additional classes', () => {
+        const wrapper = shallow(<Form className="other">Yo!</Form>);
 
-    expect(wrapper.hasClass('other')).toBe(true);
-  });
+        expect(wrapper.hasClass('other')).toBe(true);
+    });
 
-  it('should render custom tag', () => {
-    const wrapper = shallow(<Form tag="main">Yo!</Form>);
+    it('should render custom tag', () => {
+        const wrapper = shallow(<Form tag="main">Yo!</Form>);
 
-    expect(wrapper.type()).toBe('main');
-  });
+        expect(wrapper.type()).toBe('main');
+    });
 });

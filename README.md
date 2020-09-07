@@ -4,7 +4,7 @@
 
 # reactstrap
 
-Stateless React Components for Bootstrap 4.
+Stateless React Components for Bootstrap 4. (Port from reactstrap, for learning)
 
 ## Getting Started
 
