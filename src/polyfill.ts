@@ -1,4 +1,4 @@
-(() => {
+export default (() => {
     if (typeof window !== 'object' || typeof window.CustomEvent === 'function') return;
 
     const CustomEvent = ((event, params) => {
@@ -8,7 +8,8 @@
         return evt;
     });
 
-    window.CustomEvent = CustomEvent;
+    // FIXME: fix this type
+    // window.CustomEvent = CustomEvent;
 })();
 
 (() => {

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { mapToCssModules, tagPropType } from './utils';
@@ -18,16 +18,18 @@ const defaultProps = {
 
 function Form(props) {
 
+    const ref = useRef();
+
     const getRef = (ref) => {
         if (props.innerRef) {
             props.innerRef(ref);
         }
-        this.ref = ref;
+        ref.current = ref;
     }
 
     const submit = () => {
-        if (this.ref) {
-            this.ref.submit();
+        if (ref.current) {
+            ref.current.submit();
         }
     }
 

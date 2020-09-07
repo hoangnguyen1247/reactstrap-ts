@@ -12,6 +12,8 @@ function Carousel(props) {
     const touchStartY = useRef(0);
     const cycleInterval = useRef(undefined);
 
+    const prevStateActiveIndex = useRef();
+
     const [ activeIndex, setActiveIndex ] = useState(props.activeIndex);
     const [ direction, setDirection ] = useState('right');
     const [ indicatorClicked, setIndicatorClicked ] = useState(false);
@@ -36,11 +38,8 @@ function Carousel(props) {
         setIndicatorClicked(false);
     }
 
-    componentDidUpdate(prevProps, prevState) {
-        if (prevState.activeIndex === this.state.activeIndex) return;
-        handleSetInterval(props);
-    }
-
+    //
+    // didMount and willUnmount
     useEffect(() => {
         // Set up the cycle
         if (props.ride === 'carousel') {
@@ -54,9 +53,18 @@ function Carousel(props) {
             handleClearInterval();
             document.removeEventListener('keyup', handleKeyPress);
         })
+    }, [])
+
+    //
+    // didUpdate
+    useEffect(() => {
+        if (prevStateActiveIndex.current === activeIndex) return;
+
+        prevStateActiveIndex.current = activeIndex;
+        handleSetInterval();
     })
 
-    const handleSetInterval = (props = props) => {
+    const handleSetInterval = () => {
         // make sure not to have multiple intervals going...
         handleClearInterval();
         if (props.interval) {

@@ -1,7 +1,7 @@
 /* eslint react/no-find-dom-node: 0 */
 // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-find-dom-node.md
 
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Manager } from 'react-popper';
 import classNames from 'classnames';
@@ -47,85 +47,83 @@ const preventDefaultKeys = [
     keyCodes.home
 ]
 
-class Dropdown extends React.Component {
+function Dropdown(props) {
 
-    constructor(props) {
-        super(props);
+    const containerRef = useRef();
+    const _$menuCtrl = useRef();
 
-        this.addEvents = this.addEvents.bind(this);
-        this.handleDocumentClick = this.handleDocumentClick.bind(this);
-        this.handleKeyDown = this.handleKeyDown.bind(this);
-        this.removeEvents = this.removeEvents.bind(this);
-        this.toggle = this.toggle.bind(this);
+    const prevPropsIsOpen = useRef();
 
-        this.containerRef = React.createRef();
-    }
-
-    getContextValue() {
+    const getContextValue = () => {
         return {
-            toggle: this.toggle,
-            isOpen: this.props.isOpen,
-            direction: (this.props.direction === 'down' && this.props.dropup) ? 'up' : this.props.direction,
-            inNavbar: this.props.inNavbar,
-            disabled: this.props.disabled
+            toggle: toggle,
+            isOpen: props.isOpen,
+            direction: (props.direction === 'down' && props.dropup) ? 'up' : props.direction,
+            inNavbar: props.inNavbar,
+            disabled: props.disabled
         };
     }
 
-    componentDidMount() {
-        this.handleProps();
-    }
+    //
+    // didMount and willUnmount
+    useEffect(() => {
+        handleProps();
 
-    componentDidUpdate(prevProps) {
-        if (this.props.isOpen !== prevProps.isOpen) {
-            this.handleProps();
+        return (() => {
+            removeEvents();
+        })
+    }, []);
+
+    //
+    // didUpdate
+    useEffect(() => {
+        if (props.isOpen !== prevPropsIsOpen.current) {
+            prevPropsIsOpen.current = props.isOpen;
+            handleProps();
         }
+    });
+
+    const getContainer = () => {
+        return containerRef.current;
     }
 
-    componentWillUnmount() {
-        this.removeEvents();
+    const getMenuCtrl = () => {
+        if (_$menuCtrl.current) return _$menuCtrl.current;
+        _$menuCtrl.current = getContainer().querySelector('[aria-expanded]');
+        return _$menuCtrl.current;
     }
 
-    getContainer() {
-        return this.containerRef.current;
+    const getMenuItems = () => {
+        return [].slice.call(getContainer().querySelectorAll('[role="menuitem"]'));
     }
 
-    getMenuCtrl() {
-        if (this._$menuCtrl) return this._$menuCtrl;
-        this._$menuCtrl = this.getContainer().querySelector('[aria-expanded]');
-        return this._$menuCtrl;
-    }
-
-    getMenuItems() {
-        return [].slice.call(this.getContainer().querySelectorAll('[role="menuitem"]'));
-    }
-
-    addEvents() {
+    const addEvents = () => {
         ['click', 'touchstart', 'keyup'].forEach(event =>
-            document.addEventListener(event, this.handleDocumentClick, true)
+            document.addEventListener(event, handleDocumentClick, true)
         );
     }
 
-    removeEvents() {
+    const removeEvents = () => {
         ['click', 'touchstart', 'keyup'].forEach(event =>
-            document.removeEventListener(event, this.handleDocumentClick, true)
+            document.removeEventListener(event, handleDocumentClick, true)
         );
     }
 
-    handleDocumentClick(e) {
+    const handleDocumentClick = (e) => {
         if (e && (e.which === 3 || (e.type === 'keyup' && e.which !== keyCodes.tab))) return;
-        const container = this.getContainer();
+        const container = getContainer();
 
         if (container.contains(e.target) && container !== e.target && (e.type !== 'keyup' || e.which === keyCodes.tab)) {
             return;
         }
 
-        this.toggle(e);
+        toggle(e);
     }
 
-    handleKeyDown(e) {
+    const handleKeyDown = (e) => {
         if (
             /input|textarea/i.test(e.target.tagName)
-            || (keyCodes.tab === e.which && (e.target.getAttribute('role') !== 'menuitem' || !this.props.a11y))
+            || (keyCodes.tab === e.which && (e.target.getAttribute('role') !== 'menuitem' || !props.a11y))
         ) {
             return;
         }
@@ -134,32 +132,33 @@ class Dropdown extends React.Component {
             e.preventDefault();
         }
 
-        if (this.props.disabled) return;
+        if (props.disabled) return;
 
-        if (this.getMenuCtrl() === e.target) {
+        if (getMenuCtrl() === e.target) {
             if (
-                !this.props.isOpen
+                !props.isOpen
                 && ([keyCodes.space, keyCodes.enter, keyCodes.up, keyCodes.down].indexOf(e.which) > -1)
             ) {
-                this.toggle(e);
-                setTimeout(() => this.getMenuItems()[0].focus());
-            } else if (this.props.isOpen && e.which === keyCodes.esc) {
-                this.toggle(e);
+                toggle(e);
+                const $menuitems: any[] = getMenuItems();
+                setTimeout(() => $menuitems[0].focus());
+            } else if (props.isOpen && e.which === keyCodes.esc) {
+                toggle(e);
             }
         }
 
-        if (this.props.isOpen && (e.target.getAttribute('role') === 'menuitem')) {
+        if (props.isOpen && (e.target.getAttribute('role') === 'menuitem')) {
             if ([keyCodes.tab, keyCodes.esc].indexOf(e.which) > -1) {
-                this.toggle(e);
-                this.getMenuCtrl().focus();
+                toggle(e);
+                getMenuCtrl().focus();
             } else if ([keyCodes.space, keyCodes.enter].indexOf(e.which) > -1) {
                 e.target.click();
-                this.getMenuCtrl().focus();
+                getMenuCtrl().focus();
             } else if (
                 [keyCodes.down, keyCodes.up].indexOf(e.which) > -1
                 || ([keyCodes.n, keyCodes.p].indexOf(e.which) > -1 && e.ctrlKey)
             ) {
-                const $menuitems = this.getMenuItems();
+                const $menuitems: any[] = getMenuItems();
                 let index = $menuitems.indexOf(e.target);
                 if (keyCodes.up === e.which || (keyCodes.p === e.which && e.ctrlKey)) {
                     index = index !== 0 ? index - 1 : $menuitems.length - 1;
@@ -168,13 +167,13 @@ class Dropdown extends React.Component {
                 }
                 $menuitems[index].focus();
             } else if (keyCodes.end === e.which) {
-                const $menuitems = this.getMenuItems();
+                const $menuitems: any[] = getMenuItems();
                 $menuitems[$menuitems.length - 1].focus();
             } else if (keyCodes.home === e.which) {
-                const $menuitems = this.getMenuItems();
+                const $menuitems: any[] = getMenuItems();
                 $menuitems[0].focus();
             } else if ((e.which >= 48) && (e.which <= 90)) {
-                const $menuitems = this.getMenuItems();
+                const $menuitems: any[] = getMenuItems();
                 const charPressed = String.fromCharCode(e.which).toLowerCase();
                 for (let i = 0; i < $menuitems.length; i += 1) {
                     const firstLetter = $menuitems[i].textContent && $menuitems[i].textContent[0].toLowerCase();
@@ -187,77 +186,75 @@ class Dropdown extends React.Component {
         }
     }
 
-    handleProps() {
-        if (this.props.isOpen) {
-            this.addEvents();
+    const handleProps = () => {
+        if (props.isOpen) {
+            addEvents();
         } else {
-            this.removeEvents();
+            removeEvents();
         }
     }
 
-    toggle(e) {
-        if (this.props.disabled) {
+    const toggle = (e) => {
+        if (props.disabled) {
             return e && e.preventDefault();
         }
 
-        return this.props.toggle(e);
+        return props.toggle(e);
     }
 
-    render() {
-        const {
-            className,
-            cssModule,
-            direction,
-            isOpen,
-            group,
-            size,
-            nav,
-            setActiveFromChild,
-            active,
-            addonType,
-            tag,
-            ...attrs
-        } = omit(this.props, ['toggle', 'disabled', 'inNavbar', 'a11y']);
+    const {
+        className,
+        cssModule,
+        direction,
+        isOpen,
+        group,
+        size,
+        nav,
+        setActiveFromChild,
+        active,
+        addonType,
+        tag,
+        ...attrs
+    }: any = omit(props, ['toggle', 'disabled', 'inNavbar', 'a11y']);
 
-        const Tag = tag || (nav ? 'li' : 'div');
+    const Tag = tag || (nav ? 'li' : 'div');
 
-        let subItemIsActive = false;
-        if (setActiveFromChild) {
-            React.Children.map(this.props.children[1].props.children,
-                (dropdownItem) => {
-                    if (dropdownItem && dropdownItem.props.active) subItemIsActive = true;
-                }
-            );
-        }
-
-        const classes = mapToCssModules(classNames(
-            className,
-            direction !== 'down' && `drop${direction}`,
-            nav && active ? 'active' : false,
-            setActiveFromChild && subItemIsActive ? 'active' : false,
-            {
-                [`input-group-${addonType}`]: addonType,
-                'btn-group': group,
-                [`btn-group-${size}`]: !!size,
-                dropdown: !group && !addonType,
-                show: isOpen,
-                'nav-item': nav
+    let subItemIsActive = false;
+    if (setActiveFromChild) {
+        React.Children.map(props.children[1].props.children,
+            (dropdownItem) => {
+                if (dropdownItem && dropdownItem.props.active) subItemIsActive = true;
             }
-        ), cssModule);
-
-        return (
-            <DropdownContext.Provider value={this.getContextValue()}>
-                <Manager>
-                    <Tag
-                        {...attrs}
-                        {...{ [typeof Tag === 'string' ? 'ref' : 'innerRef']: this.containerRef }}
-                        onKeyDown={this.handleKeyDown}
-                        className={classes}
-                    />
-                </Manager>
-            </DropdownContext.Provider>
         );
     }
+
+    const classes = mapToCssModules(classNames(
+        className,
+        direction !== 'down' && `drop${direction}`,
+        nav && active ? 'active' : false,
+        setActiveFromChild && subItemIsActive ? 'active' : false,
+        {
+            [`input-group-${addonType}`]: addonType,
+            'btn-group': group,
+            [`btn-group-${size}`]: !!size,
+            dropdown: !group && !addonType,
+            show: isOpen,
+            'nav-item': nav
+        }
+    ), cssModule);
+
+    return (
+        <DropdownContext.Provider value={getContextValue()}>
+            <Manager>
+                <Tag
+                    {...attrs}
+                    {...{ [typeof Tag === 'string' ? 'ref' : 'innerRef']: containerRef }}
+                    onKeyDown={handleKeyDown}
+                    className={classes}
+                />
+            </Manager>
+        </DropdownContext.Provider>
+    );
 }
 
 Dropdown.propTypes = propTypes;

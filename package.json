@@ -1,25 +1,26 @@
 {
     "name": "reactstrap-ts",
     "version": "8.5.1",
-    "description": "React Bootstrap 4 components (port from react, for learning)",
+    "description": "React Bootstrap 4 components (port from reactstrap, for learning)",
     "main": "lib/index.js",
     "jsnext:main": "es/index.js",
     "module": "es/index.js",
-    "jsdelivr": "dist/reactstrap.min.js",
-    "unpkg": "dist/reactstrap.min.js",
-    "cdn": "dist/reactstrap.min.js",
+    "jsdelivr": "dist/reactstrap-ts.min.js",
+    "unpkg": "dist/reactstrap-ts.min.js",
+    "cdn": "dist/reactstrap-ts.min.js",
     "esnext": "src/index.js",
     "sideEffects": false,
     "scripts": {
         "report-coverage": "coveralls < ./coverage/lcov.info",
         "test": "cross-env SKIP_PREFLIGHT_CHECK=true react-app-rewired test --env=jsdom",
         "cover": "npm test -- --coverage",
+        "type-check": "tsc --noEmit",
         "start": "webpack-dev-server --config ./webpack.docs.config.js --watch",
         "build:docs": "cross-env WEBPACK_BUILD=production webpack --config ./webpack.docs.config.js --progress --colors",
         "build": "npm run build:lib && npm run build:esm && npm run build:umd",
         "build:umd": "rollup -c",
-        "build:lib": "babel src --out-dir lib --ignore src/__tests__/",
-        "build:esm": "cross-env BABEL_ENV=esm-dir babel src --out-dir es --ignore src/__tests__/",
+        "build:lib": "babel src --out-dir lib --extensions \".ts,.tsx\" --ignore src/__tests__/",
+        "build:esm": "cross-env BABEL_ENV=esm-dir babel src --out-dir es --extensions \".ts,.tsx\" --ignore src/__tests__/",
         "postbuild": "node ./scripts/postbuild.js",
         "create-release": "npm run cover && sh ./scripts/release",
         "publish-release": "npm run cover && sh ./scripts/publish",
@@ -27,7 +28,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+ssh://git@github.com/reactstrap/reactstrap.git"
+        "url": "git+ssh://git@github.com/hoangnguyen1247/reactstrap-ts.git"
     },
     "files": [
         "LICENSE",
@@ -40,6 +41,7 @@
     ],
     "keywords": [
         "reactstrap",
+        "reactstrap-ts",
         "bootstrap",
         "react",
         "component",
@@ -250,9 +252,9 @@
     ],
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/reactstrap/reactstrap/issues"
+        "url": "https://github.com/hoangnguyen1247/reactstrap-ts/issues"
     },
-    "homepage": "https://github.com/reactstrap/reactstrap#readme",
+    "homepage": "https://github.com/hoangnguyen1247/reactstrap-ts#readme",
     "dependencies": {
         "@babel/runtime": "^7.2.0",
         "classnames": "^2.2.3",
@@ -310,15 +312,21 @@
         "react-test-renderer": "^16.3.2",
         "rollup": "^1.0.0",
         "rollup-plugin-babel": "^4.2.0",
-        "rollup-plugin-babel-minify": "^6.2.0",
+        "rollup-plugin-babel-minify": "^10.0.0",
         "rollup-plugin-commonjs": "^10.1.0",
         "rollup-plugin-node-resolve": "^4.0.0",
         "rollup-plugin-replace": "^2.1.0",
+        "rollup-plugin-typescript2": "^0.27.2",
         "static-site-generator-webpack-plugin": "^3.4.2",
         "style-loader": "^0.23.1",
         "typescript": "^4.0.2",
         "webpack": "^4.43.0",
         "webpack-cli": "^3.3.12",
         "webpack-dev-server": "^3.11.0"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm run type-check"
+        }
     }
 }

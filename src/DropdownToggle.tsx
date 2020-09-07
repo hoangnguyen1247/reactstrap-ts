@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Reference } from 'react-popper';
@@ -25,94 +25,87 @@ const defaultProps = {
     color: 'secondary',
 };
 
-class DropdownToggle extends React.Component {
+function DropdownToggle(props) {
 
-    constructor(props) {
-        super(props);
+    const context = useContext(DropdownContext);
 
-        this.onClick = this.onClick.bind(this);
-    }
-
-    onClick(e) {
-        if (this.props.disabled || this.context.disabled) {
+    const onClick = (e) => {
+        if (props.disabled || context.disabled) {
             e.preventDefault();
             return;
         }
 
-        if (this.props.nav && !this.props.tag) {
+        if (props.nav && !props.tag) {
             e.preventDefault();
         }
 
-        if (this.props.onClick) {
-            this.props.onClick(e);
+        if (props.onClick) {
+            props.onClick(e);
         }
 
-        this.context.toggle(e);
+        context.toggle(e);
     }
 
-    render() {
-        const { className, color, cssModule, caret, split, nav, tag, innerRef, ...props } = this.props;
-        const ariaLabel = props['aria-label'] || 'Toggle Dropdown';
-        const classes = mapToCssModules(classNames(
-            className,
-            {
-                'dropdown-toggle': caret || split,
-                'dropdown-toggle-split': split,
-                'nav-link': nav
-            }
-        ), cssModule);
-        const children =
-            typeof props.children !== 'undefined' ? (
-                props.children
-            ) : (
-                    <span className="sr-only">{ariaLabel}</span>
-                );
-
-        let Tag;
-
-        if (nav && !tag) {
-            Tag = 'a';
-            props.href = '#';
-        } else if (!tag) {
-            Tag = Button;
-            props.color = color;
-            props.cssModule = cssModule;
-        } else {
-            Tag = tag;
+    const { className, color, cssModule, caret, split, nav, tag, innerRef, ...rest } = props;
+    const ariaLabel = rest['aria-label'] || 'Toggle Dropdown';
+    const classes = mapToCssModules(classNames(
+        className,
+        {
+            'dropdown-toggle': caret || split,
+            'dropdown-toggle-split': split,
+            'nav-link': nav
         }
-
-        if (this.context.inNavbar) {
-            return (
-                <Tag
-                    {...props}
-                    className={classes}
-                    onClick={this.onClick}
-                    aria-expanded={this.context.isOpen}
-                    children={children}
-                />
+    ), cssModule);
+    const children =
+        typeof rest.children !== 'undefined' ? (
+            rest.children
+        ) : (
+                <span className="sr-only">{ariaLabel}</span>
             );
-        }
 
+    let Tag;
+
+    if (nav && !tag) {
+        Tag = 'a';
+        rest.href = '#';
+    } else if (!tag) {
+        Tag = Button;
+        rest.color = color;
+        rest.cssModule = cssModule;
+    } else {
+        Tag = tag;
+    }
+
+    if (context.inNavbar) {
         return (
-            <Reference innerRef={innerRef}>
-                {({ ref }) => (
-                    <Tag
-                        {...props}
-                        {...{ [typeof Tag === 'string' ? 'ref' : 'innerRef']: ref }}
-
-                        className={classes}
-                        onClick={this.onClick}
-                        aria-expanded={this.context.isOpen}
-                        children={children}
-                    />
-                )}
-            </Reference>
+            <Tag
+                {...rest}
+                className={classes}
+                onClick={onClick}
+                aria-expanded={context.isOpen}
+                children={children}
+            />
         );
     }
+
+    return (
+        <Reference innerRef={innerRef}>
+            {({ ref }) => (
+                <Tag
+                    {...rest}
+                    {...{ [typeof Tag === 'string' ? 'ref' : 'innerRef']: ref }}
+
+                    className={classes}
+                    onClick={onClick}
+                    aria-expanded={context.isOpen}
+                    children={children}
+                />
+            )}
+        </Reference>
+    );
 }
 
 DropdownToggle.propTypes = propTypes;
 DropdownToggle.defaultProps = defaultProps;
-DropdownToggle.contextType = DropdownContext;
 
 export default DropdownToggle;

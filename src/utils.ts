@@ -16,7 +16,7 @@ export function getScrollbarWidth() {
 }
 
 export function setScrollbarWidth(padding) {
-    document.body.style.paddingRight = padding > 0 ? `${padding}px` : null;
+    document.body.style.paddingRight = padding > 0 ? `${padding}px` : '';
 }
 
 export function isBodyOverflowing() {
@@ -32,7 +32,7 @@ export function getOriginalBodyPadding() {
 export function conditionallyUpdateScrollbar() {
     const scrollbarWidth = getScrollbarWidth();
     // https://github.com/twbs/bootstrap/blob/v4.0.0-alpha.6/js/src/modal.js#L433
-    const fixedContent = document.querySelectorAll(
+    const fixedContent: any = document.querySelectorAll(
         '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top'
     )[0];
     const bodyPadding = fixedContent
