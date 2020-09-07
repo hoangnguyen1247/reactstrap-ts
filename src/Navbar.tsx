@@ -32,7 +32,7 @@ const getExpandClass = (expand) => {
     return `navbar-expand-${expand}`;
 };
 
-const Navbar = (props) => {
+export const Navbar = (props) => {
     const {
         expand,
         className,

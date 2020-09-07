@@ -22,7 +22,7 @@ const defaultProps = {
     tag: 'div'
 };
 
-const Card = (props) => {
+export const Card = (props) => {
     const {
         className,
         cssModule,

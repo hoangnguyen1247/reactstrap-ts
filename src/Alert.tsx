@@ -35,7 +35,7 @@ const defaultProps = {
     },
 };
 
-function Alert(props) {
+export function Alert(props) {
     const {
         className,
         closeClassName,

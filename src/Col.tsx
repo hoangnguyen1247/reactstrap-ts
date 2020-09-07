@@ -44,7 +44,7 @@ const getColumnSizeClass = (isXs, colWidth, colSize) => {
     return isXs ? `col-${colSize}` : `col-${colWidth}-${colSize}`;
 };
 
-const Col = (props) => {
+export const Col = (props) => {
     const {
         className,
         cssModule,

@@ -28,7 +28,7 @@ const defaultProps = {
     type: 'text'
 };
 
-function Input(props) {
+export function Input(props) {
 
     const ref = useRef();
 

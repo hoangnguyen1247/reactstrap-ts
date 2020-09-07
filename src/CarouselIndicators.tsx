@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { mapToCssModules } from './utils';
 
-const CarouselIndicators = (props) => {
+export const CarouselIndicators = (props) => {
     const { items, activeIndex, cssModule, onClickHandler, className } = props;
 
     const listClasses = mapToCssModules(classNames(className, 'carousel-indicators'), cssModule);

@@ -11,7 +11,8 @@ describe('Tooltip', () => {
         const wrapper = mount(
             <Tooltip target="tooltip-target" popperClassName="boba-was-here">
                 Tooltip Content
-      </Tooltip>);
+            </Tooltip>
+        );
 
         const tooltipPopoverWrapper = wrapper.find('TooltipPopoverWrapper');
         expect(tooltipPopoverWrapper.find({ popperClassName: 'tooltip show boba-was-here' }).exists()).toBe(true);

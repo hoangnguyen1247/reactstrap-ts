@@ -19,7 +19,7 @@ const defaultProps = {
     tag: 'span'
 };
 
-const Badge = (props) => {
+export const Badge = (props) => {
     let {
         className,
         cssModule,

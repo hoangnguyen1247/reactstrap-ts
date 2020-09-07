@@ -31,7 +31,7 @@ const directionPositionMap = {
     down: 'bottom',
 };
 
-function DropdownMenu(props) {
+export function DropdownMenu(props) {
 
     const context = useContext(DropdownContext);
 

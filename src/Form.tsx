@@ -16,7 +16,7 @@ const defaultProps = {
     tag: 'form',
 };
 
-function Form(props) {
+export function Form(props) {
 
     const ref = useRef();
 

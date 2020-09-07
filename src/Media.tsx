@@ -19,7 +19,7 @@ const propTypes = {
     top: PropTypes.bool,
 };
 
-const Media = (props) => {
+export const Media = (props) => {
     const {
         body,
         bottom,

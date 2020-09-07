@@ -29,7 +29,7 @@ const defaultProps = {
     },
 };
 
-function Toast(props) {
+export function Toast(props) {
     const {
         className,
         cssModule,

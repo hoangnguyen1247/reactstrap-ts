@@ -14,7 +14,7 @@ const defaultProps = {
     tag: 'li'
 };
 
-const NavItem = (props) => {
+export const NavItem = (props) => {
     const {
         className,
         cssModule,

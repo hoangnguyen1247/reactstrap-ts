@@ -18,7 +18,7 @@ const defaultProps = {
     tag: 'div'
 };
 
-const ToastBody = (props) => {
+export const ToastBody = (props) => {
     const {
         className,
         cssModule,

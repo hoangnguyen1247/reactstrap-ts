@@ -89,7 +89,7 @@ const defaultProps = {
     container: 'body'
 };
 
-function Modal(props) {
+export function Modal(props) {
     const _isMounted = useRef(null);
     const _element = useRef(null);
     const _dialog = useRef(null);

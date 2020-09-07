@@ -16,7 +16,7 @@ const defaultProps = {
     type: 'button'
 };
 
-const NavbarToggler = (props) => {
+export const NavbarToggler = (props) => {
     const {
         className,
         cssModule,

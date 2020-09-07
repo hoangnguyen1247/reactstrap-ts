@@ -21,7 +21,7 @@ const handleDisabledOnClick = (e) => {
     e.preventDefault();
 };
 
-const ListGroupItem = (props) => {
+export const ListGroupItem = (props) => {
     const {
         className,
         cssModule,

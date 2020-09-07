@@ -13,7 +13,7 @@ const defaultProps = {
     tag: 'p'
 };
 
-const ListGroupItemText = (props) => {
+export const ListGroupItemText = (props) => {
     const {
         className,
         cssModule,

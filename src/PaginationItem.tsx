@@ -16,7 +16,7 @@ const defaultProps = {
     tag: 'li',
 };
 
-const PaginationItem = (props) => {
+export const PaginationItem = (props) => {
     const {
         active,
         className,

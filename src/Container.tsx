@@ -14,7 +14,7 @@ const defaultProps = {
     tag: 'div',
 };
 
-const Container = (props) => {
+export const Container = (props) => {
     const {
         className,
         cssModule,

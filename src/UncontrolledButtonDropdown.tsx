@@ -5,7 +5,7 @@ import { omit } from './utils';
 
 const omitKeys = ['defaultOpen'];
 
-export default function UncontrolledButtonDropdown(props) {
+export function UncontrolledButtonDropdown(props) {
 
     const [ isOpen, setIsOpen ] = useState(props.defaultOpen || false);
 
@@ -26,3 +26,5 @@ UncontrolledButtonDropdown.propTypes = {
     defaultOpen: PropTypes.bool,
     ...ButtonDropdown.propTypes
 };
+
+export default UncontrolledButtonDropdown;

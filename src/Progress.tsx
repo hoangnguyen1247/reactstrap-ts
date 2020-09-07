@@ -39,7 +39,7 @@ const defaultProps = {
     style: {},
 };
 
-const Progress = (props) => {
+export const Progress = (props) => {
     const {
         children,
         className,

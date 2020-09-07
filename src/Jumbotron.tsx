@@ -14,7 +14,7 @@ const defaultProps = {
     tag: 'div'
 };
 
-const Jumbotron = (props) => {
+export const Jumbotron = (props) => {
     const {
         className,
         cssModule,

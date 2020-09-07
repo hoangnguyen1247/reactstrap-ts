@@ -13,7 +13,7 @@ const defaultProps = {
     tag: 'h3'
 };
 
-const PopoverHeader = (props) => {
+export const PopoverHeader = (props) => {
     const {
         className,
         cssModule,

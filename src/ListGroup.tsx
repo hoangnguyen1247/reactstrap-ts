@@ -25,7 +25,7 @@ const getHorizontalClass = horizontal => {
     return `list-group-horizontal-${horizontal}`;
 };
 
-const ListGroup = (props) => {
+export const ListGroup = (props) => {
     const {
         className,
         cssModule,

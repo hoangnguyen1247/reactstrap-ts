@@ -18,7 +18,7 @@ const defaultProps = {
     tag: 'a',
 };
 
-function NavLink(props) {
+export function NavLink(props) {
 
     const onClick = (e) => {
         if (props.disabled) {

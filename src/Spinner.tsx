@@ -19,7 +19,7 @@ const defaultProps = {
     children: 'Loading...'
 };
 
-const Spinner = props => {
+export const Spinner = props => {
     const {
         className,
         cssModule,

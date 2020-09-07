@@ -19,7 +19,7 @@ const defaultProps = {
     'aria-label': 'breadcrumb'
 };
 
-const Breadcrumb = (props) => {
+export const Breadcrumb = (props) => {
     const {
         className,
         listClassName,

@@ -8,7 +8,7 @@ const defaultProps = {
     trigger: 'click',
 };
 
-const Popover = (props) => {
+export const Popover = (props) => {
     const popperClasses = classNames(
         'popover',
         'show',

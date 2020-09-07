@@ -13,7 +13,7 @@ const defaultProps = {
     tag: 'div'
 };
 
-const CardGroup = (props) => {
+export const CardGroup = (props) => {
     const {
         className,
         cssModule,

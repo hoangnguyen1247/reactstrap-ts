@@ -19,7 +19,7 @@ const propTypes = {
     innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.string, PropTypes.func])
 };
 
-function CustomInput(props) {
+export function CustomInput(props) {
     const {
         className,
         label,

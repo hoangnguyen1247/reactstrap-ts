@@ -13,7 +13,7 @@ const defaultProps = {
     tag: 'div'
 };
 
-const CardColumns = (props) => {
+export const CardColumns = (props) => {
     const {
         className,
         cssModule,

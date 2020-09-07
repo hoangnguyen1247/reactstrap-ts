@@ -14,7 +14,7 @@ const defaultProps = {
     tag: 'a'
 };
 
-const CardLink = (props) => {
+export const CardLink = (props) => {
     const {
         className,
         cssModule,

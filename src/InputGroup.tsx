@@ -14,7 +14,7 @@ const defaultProps = {
     tag: 'div'
 };
 
-const InputGroup = (props) => {
+export const InputGroup = (props) => {
     const {
         className,
         cssModule,

@@ -18,7 +18,7 @@ const defaultProps = {
     role: 'group',
 };
 
-const ButtonGroup = (props) => {
+export const ButtonGroup = (props) => {
     const {
         className,
         cssModule,

@@ -17,7 +17,7 @@ const defaultProps = {
     color: 'muted',
 };
 
-const FormText = (props) => {
+export const FormText = (props) => {
     const {
         className,
         cssModule,

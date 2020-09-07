@@ -17,7 +17,7 @@ const defaultProps = {
     valid: undefined
 };
 
-const FormFeedback = (props) => {
+export const FormFeedback = (props) => {
     const {
         className,
         cssModule,

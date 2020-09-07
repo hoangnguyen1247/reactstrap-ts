@@ -13,7 +13,7 @@ const defaultProps = {
     tag: 'p'
 };
 
-const CardText = (props) => {
+export const CardText = (props) => {
     const {
         className,
         cssModule,

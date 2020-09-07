@@ -34,7 +34,7 @@ const defaultProps = {
     in: true,
 };
 
-function Fade(props) {
+export function Fade(props) {
     const {
         tag: Tag,
         baseClass,

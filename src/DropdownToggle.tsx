@@ -25,7 +25,7 @@ const defaultProps = {
     color: 'secondary',
 };
 
-function DropdownToggle(props) {
+export function DropdownToggle(props) {
 
     const context = useContext(DropdownContext);
 

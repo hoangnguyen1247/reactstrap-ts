@@ -13,7 +13,7 @@ const defaultProps = {
     tag: 'span'
 };
 
-const InputGroupText = (props) => {
+export const InputGroupText = (props) => {
     const {
         className,
         cssModule,

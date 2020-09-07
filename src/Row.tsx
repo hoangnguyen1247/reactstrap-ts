@@ -24,7 +24,7 @@ const defaultProps = {
     widths: rowColWidths
 };
 
-const Row = (props) => {
+export const Row = (props) => {
     const {
         className,
         cssModule,

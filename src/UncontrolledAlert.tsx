@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Alert from './Alert';
 
-function UncontrolledAlert(props) {
+export function UncontrolledAlert(props) {
 
     const [ isOpen, setIsOpen ] = useState(true);
 

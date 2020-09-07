@@ -13,7 +13,7 @@ const defaultProps = {
     tag: 'div'
 };
 
-const CardSubtitle = (props) => {
+export const CardSubtitle = (props) => {
     const {
         className,
         cssModule,

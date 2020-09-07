@@ -13,7 +13,7 @@ const defaultProps = {
     tag: 'div',
 };
 
-const ModalBody = (props) => {
+export const ModalBody = (props) => {
     const {
         className,
         cssModule,

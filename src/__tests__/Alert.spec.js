@@ -6,6 +6,7 @@ describe('Alert', () => {
     it('should render children', () => {
         const alert = mount(<Alert>Yo!</Alert>);
         expect(alert.text()).toBe('Yo!');
+
     });
 
     it('should pass className down', () => {

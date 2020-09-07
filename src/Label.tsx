@@ -50,7 +50,7 @@ const getColumnSizeClass = (isXs, colWidth, colSize) => {
     return isXs ? `col-${colSize}` : `col-${colWidth}-${colSize}`;
 };
 
-const Label = (props) => {
+export const Label = (props) => {
     const {
         className,
         cssModule,

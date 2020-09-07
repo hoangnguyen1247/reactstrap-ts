@@ -13,7 +13,7 @@ const defaultProps = {
     tag: 'span'
 };
 
-const NavbarText = (props) => {
+export const NavbarText = (props) => {
     const {
         className,
         cssModule,

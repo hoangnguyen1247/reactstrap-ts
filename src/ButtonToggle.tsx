@@ -15,7 +15,7 @@ const defaultProps = {
     defaultValue: false,
 };
 
-function ButtonToggle (props) {
+export function ButtonToggle (props) {
     const [ toggled, setToggled ] = useState(props.defaultValue);
     const [ focus, setFocus ] = useState(false);
 
@@ -43,26 +43,26 @@ function ButtonToggle (props) {
         setToggled(!toggled)
     }
 
-        const {
-            className,
-            ...attributes
-        } = props;
+    const {
+        className,
+        ...attributes
+    } = props;
 
-        const classes = mapToCssModules(classNames(
-            className,
-            {
-                focus: focus,
-            }
-        ), props.cssModule);
+    const classes = mapToCssModules(classNames(
+        className,
+        {
+            focus: focus,
+        }
+    ), props.cssModule);
 
-        return <Button
-            active={toggled}
-            onBlur={onBlur}
-            onFocus={onFocus}
-            onClick={onClick}
-            className={classes}
-            {...attributes}
-        />;
+    return <Button
+        active={toggled}
+        onBlur={onBlur}
+        onFocus={onFocus}
+        onClick={onClick}
+        className={classes}
+        {...attributes}
+    />;
 }
 
 ButtonToggle.propTypes = propTypes;

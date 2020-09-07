@@ -6,7 +6,7 @@ const propTypes = {
     children: PropTypes.node,
 };
 
-const ButtonDropdown = (props) => {
+export const ButtonDropdown = (props) => {
     return (
         <Dropdown group {...props} />
     );

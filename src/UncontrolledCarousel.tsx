@@ -18,7 +18,7 @@ const propTypes = {
     goToIndex: PropTypes.func,
 };
 
-function UncontrolledCarousel(props) {
+export function UncontrolledCarousel(props) {
 
     const animating = useRef(false);
     const [ activeIndex, setActiveIndex ] = useState(props.defaultActiveIndex || 0);

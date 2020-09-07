@@ -47,7 +47,7 @@ function getHeight(node) {
     return node.scrollHeight;
 }
 
-function Collapse(props) {
+export function Collapse(props) {
 
     const [ height, setHeight ] = useState(null);
 

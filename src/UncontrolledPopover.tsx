@@ -5,7 +5,7 @@ import { omit } from './utils';
 
 const omitKeys = ['defaultOpen'];
 
-export default function UncontrolledPopover (props) {
+export function UncontrolledPopover (props) {
     const [ isOpen, setIsOpen ] = useState(props.defaultOpen || false);
 
     const toggle = () => {
@@ -24,3 +24,5 @@ UncontrolledPopover.propTypes = {
     defaultOpen: PropTypes.bool,
     ...Popover.propTypes
 };
+
+export default UncontrolledPopover;

@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { Transition } from 'react-transition-group';
 import { mapToCssModules, TransitionTimeouts, TransitionStatuses, tagPropType } from './utils';
 
-function CarouselItem(props, context) {
+export function CarouselItem(props, context) {
 
     const [ startAnimation, setStartAnimation ] = useState(false);
 

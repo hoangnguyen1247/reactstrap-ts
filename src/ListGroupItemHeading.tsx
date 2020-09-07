@@ -13,7 +13,7 @@ const defaultProps = {
     tag: 'h5'
 };
 
-const ListGroupItemHeading = (props) => {
+export const ListGroupItemHeading = (props) => {
     const {
         className,
         cssModule,

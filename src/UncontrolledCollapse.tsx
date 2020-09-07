@@ -15,7 +15,7 @@ const defaultProps = {
     toggleEvents: defaultToggleEvents
 };
 
-function UncontrolledCollapse(props) {
+export function UncontrolledCollapse(props) {
 
     const togglers = useRef([]);
     const removeEventListeners = useRef([]);

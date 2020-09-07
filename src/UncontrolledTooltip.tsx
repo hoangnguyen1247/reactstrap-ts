@@ -5,7 +5,7 @@ import { omit } from './utils';
 
 const omitKeys = ['defaultOpen'];
 
-export default function UncontrolledTooltip(props) {
+export function UncontrolledTooltip(props) {
 
     const [ isOpen, setIsOpen ] = useState(props.defaultOpen || false);
 
@@ -26,3 +26,5 @@ UncontrolledTooltip.propTypes = {
     defaultOpen: PropTypes.bool,
     ...Tooltip.propTypes
 };
+
+export default UncontrolledTooltip;

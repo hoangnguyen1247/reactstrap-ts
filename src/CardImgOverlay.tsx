@@ -13,7 +13,7 @@ const defaultProps = {
     tag: 'div'
 };
 
-const CardImgOverlay = (props) => {
+export const CardImgOverlay = (props) => {
     const {
         className,
         cssModule,

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { mapToCssModules } from './utils';
 
-const CarouselControl = (props) => {
+export const CarouselControl = (props) => {
     const { direction, onClickHandler, cssModule, directionText, className } = props;
 
     const anchorClasses = mapToCssModules(classNames(

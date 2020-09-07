@@ -24,7 +24,7 @@ const defaultProps = {
     charCode: 215,
 };
 
-const ToastHeader = (props) => {
+export const ToastHeader = (props) => {
     let closeButton;
     let icon;
     const {

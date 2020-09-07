@@ -47,7 +47,7 @@ const defaultProps = {
     }
 };
 
-function PopperContent(props) {
+export function PopperContent(props) {
 
     const _element = useRef();
     const targetNode = useRef();

@@ -23,7 +23,7 @@ const defaultProps = {
     toggle: true
 };
 
-function DropdownItem(props) {
+export function DropdownItem(props) {
 
     const {
         toggle,

@@ -15,7 +15,7 @@ const defaultProps = {
     tag: 'img'
 };
 
-const CardImg = (props) => {
+export const CardImg = (props) => {
     const {
         className,
         cssModule,

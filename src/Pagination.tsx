@@ -20,7 +20,7 @@ const defaultProps = {
     'aria-label': 'pagination'
 };
 
-const Pagination = (props) => {
+export const Pagination = (props) => {
     const {
         className,
         listClassName,

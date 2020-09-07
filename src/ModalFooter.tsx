@@ -13,7 +13,7 @@ const defaultProps = {
     tag: 'div',
 };
 
-const ModalFooter = (props) => {
+export const ModalFooter = (props) => {
     const {
         className,
         cssModule,

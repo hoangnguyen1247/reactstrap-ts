@@ -25,7 +25,7 @@ const propTypes = {
     ])
 };
 
-function CustomFileInput(props) {
+export function CustomFileInput(props) {
 
     const [ files, setFiles ] = useState(undefined);
 

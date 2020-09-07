@@ -9,7 +9,7 @@ const defaultProps = {
     trigger: 'hover focus',
 };
 
-const Tooltip = (props) => {
+export const Tooltip = (props) => {
     const popperClasses = classNames(
         'tooltip',
         'show',

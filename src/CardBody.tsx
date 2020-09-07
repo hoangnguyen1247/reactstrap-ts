@@ -18,7 +18,7 @@ const defaultProps = {
     tag: 'div'
 };
 
-const CardBody = (props) => {
+export const CardBody = (props) => {
     const {
         className,
         cssModule,

@@ -17,7 +17,7 @@ const defaultProps = {
 };
 
 
-function TabContent(props) {
+export function TabContent(props) {
 
     const [ activeTab, setActiveTab ] = useState(props.activeTab);
 

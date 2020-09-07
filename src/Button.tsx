@@ -25,7 +25,7 @@ const defaultProps = {
     tag: 'button',
 };
 
-function Button(props) {
+export function Button(props) {
 
     const onClick = (e) => {
         if (props.disabled) {

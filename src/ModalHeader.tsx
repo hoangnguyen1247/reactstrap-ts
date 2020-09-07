@@ -22,7 +22,7 @@ const defaultProps = {
     charCode: 215,
 };
 
-const ModalHeader = (props) => {
+export const ModalHeader = (props) => {
     let closeButton;
     const {
         className,

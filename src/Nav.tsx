@@ -32,7 +32,7 @@ const getVerticalClass = (vertical) => {
     return `flex-${vertical}-column`;
 };
 
-const Nav = (props) => {
+export const Nav = (props) => {
     const {
         className,
         cssModule,

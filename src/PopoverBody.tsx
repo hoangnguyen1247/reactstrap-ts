@@ -13,7 +13,7 @@ const defaultProps = {
     tag: 'div'
 };
 
-const PopoverBody = (props) => {
+export const PopoverBody = (props) => {
     const {
         className,
         cssModule,

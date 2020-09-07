@@ -15,7 +15,7 @@ const defaultProps = {
     tag: 'div',
 };
 
-export default function TabPane(props) {
+export function TabPane(props) {
     const {
         className,
         cssModule,
@@ -32,3 +32,5 @@ export default function TabPane(props) {
 }
 TabPane.propTypes = propTypes;
 TabPane.defaultProps = defaultProps;
+
+export default TabPane;

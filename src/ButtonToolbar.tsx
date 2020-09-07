@@ -16,7 +16,7 @@ const defaultProps = {
     role: 'toolbar',
 };
 
-const ButtonToolbar = (props) => {
+export const ButtonToolbar = (props) => {
     const {
         className,
         cssModule,

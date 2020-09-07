@@ -47,7 +47,7 @@ const preventDefaultKeys = [
     keyCodes.home
 ]
 
-function Dropdown(props) {
+export function Dropdown(props) {
 
     const containerRef = useRef();
     const _$menuCtrl = useRef();

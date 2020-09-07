@@ -18,7 +18,7 @@ const defaultProps = {
     tag: 'div',
 };
 
-const FormGroup = (props) => {
+export const FormGroup = (props) => {
     const {
         className,
         cssModule,

@@ -13,7 +13,7 @@ const defaultProps = {
     tag: 'a'
 };
 
-const NavbarBrand = (props) => {
+export const NavbarBrand = (props) => {
     const {
         className,
         cssModule,

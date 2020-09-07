@@ -13,7 +13,7 @@ const defaultProps = {
     tag: 'div'
 };
 
-const CardFooter = (props) => {
+export const CardFooter = (props) => {
     const {
         className,
         cssModule,

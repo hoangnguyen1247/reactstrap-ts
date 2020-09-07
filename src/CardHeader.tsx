@@ -13,7 +13,7 @@ const defaultProps = {
     tag: 'div'
 };
 
-const CardHeader = (props) => {
+export const CardHeader = (props) => {
     const {
         className,
         cssModule,

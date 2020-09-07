@@ -6,7 +6,7 @@ import { mapToCssModules } from './utils';
 
 const SWIPE_THRESHOLD = 40;
 
-function Carousel(props) {
+export function Carousel(props) {
 
     const touchStartX = useRef(0);
     const touchStartY = useRef(0);

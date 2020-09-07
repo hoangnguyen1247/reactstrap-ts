@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { getTarget, targetPropType } from './utils';
 
-const PopperTargetHelper = (props, context) => {
+export const PopperTargetHelper = (props, context) => {
     context.popperManager.setTargetNode(getTarget(props.target));
     return null;
 };

@@ -14,7 +14,7 @@ const defaultProps = {
     tag: 'li'
 };
 
-const BreadcrumbItem = (props) => {
+export const BreadcrumbItem = (props) => {
     const {
         className,
         cssModule,

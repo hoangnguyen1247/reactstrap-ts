@@ -19,7 +19,7 @@ const defaultProps = {
     tag: 'a',
 };
 
-const PaginationLink = (props) => {
+export const PaginationLink = (props) => {
     let {
         className,
         cssModule,

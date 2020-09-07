@@ -23,7 +23,7 @@ const defaultProps = {
     responsiveTag: 'div',
 };
 
-const Table = (props) => {
+export const Table = (props) => {
     const {
         className,
         cssModule,
